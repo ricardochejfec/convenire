@@ -3,16 +3,20 @@ $(document).ready(function() {
     // var wrapper         = $(".name"); //Fields wrapper
 	var rem_button = $("a.remove_field");
 
+    var a = 1;
+
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
     $(".add_button_loc").click(function(e){ //on add input button click
     	var wrapper = $(this).parent();
         e.preventDefault();
-        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="locs[]" placeholder="Location" required=""> \
+
+        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="locs[' + a + ']" placeholder="Location" required=""> \
          <button class="btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
-        $(wrapper).append($(str_to_append)); //add input box 
-        
+        $(wrapper).append($(str_to_append)); //add input box
+        a++;
+        alert(a);
     });
 
     $(".add_button_task_guest").click(function(e){ //on add input button click
@@ -21,9 +25,9 @@ $(document).ready(function() {
         var sibl = $(this).siblings("input");
         var ph = $(sibl).attr("placeholder");
         var nom = $(sibl).attr("name");
-        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="' + nom + '" placeholder="'+ ph + '" required="" style="min-width: 30%"> \
+        alert(nom);
+        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="' + nom + '"  placeholder="'+ ph + '" required="" style="min-width: 30%"> \
          <button class="btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
-         alert(str_to_append);
         $(wrapper).append($(str_to_append)); //add input box 
 
     });
