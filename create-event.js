@@ -21,8 +21,9 @@ $(document).ready(function() {
         var sibl = $(this).siblings("input");
         var ph = $(sibl).attr("placeholder");
         var nom = $(sibl).attr("name");
-        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="' + nom + '"placeholder="'+ ph + '" required="" style="min-width: 30%"> \
+        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="' + nom + '" placeholder="'+ ph + '" required="" style="min-width: 30%"> \
          <button class="btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
+         alert(str_to_append);
         $(wrapper).append($(str_to_append)); //add input box 
 
     });
