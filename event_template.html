@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Convenire</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="libraries/jquery-ui.css">
+		<link rel="stylesheet" href="libraries/jquery.timepicker.css">
+		<link rel="stylesheet" href="index.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<h2>Create Event</h2>
+			<form>
+				<div class="form-group">
+					<label>Event Title</label>
+					<div class="radio">
+						<label><input type="radio" name="title"> Event Title 1</label>   <!-- Change this -->
+			    	</div>
+			    	<div class="radio">
+						<label><input type="radio" name="title"> Event Title 2</label>   <!-- Change this -->
+			    	</div>
+			  	</div>
+
+			  	<div class="form-group">
+					<label>Available Dates</label>
+					<div class="checkbox">
+						<label><input type="checkbox" name="dates[]"> DD/MM/YY | Start time - End Time | #1 </label>   <!-- Change this -->
+			    	</div>
+			    	<div class="checkbox">
+						<label><input type="checkbox" name="dates[]"> DD/MM/YY | Start time - End Time | #2 </label>   <!-- Change this -->
+			    	</div>
+			  	</div>
+
+			  	<div class="form-group">
+					<label>Tasks</label>
+					<div class="checkbox">
+						<label><input type="checkbox" name="tasks[]"> Task #1 </label>   <!-- Change this -->
+			    	</div>
+			    	<div class="checkbox">
+						<label><input type="checkbox" name="tasks[]"> Task #2 </label>   <!-- Change this -->
+			    	</div>
+			    	<div class="checkbox">
+						<label><input type="checkbox" name="tasks[]"> Task #3 </label>   <!-- Change this -->
+			    	</div>
+			    	<div class="checkbox">
+						<label><input type="checkbox" name="tasks[]"> Task #4 </label>   <!-- Change this -->
+			    	</div>
+			    	<div class="checkbox">
+						<label><input type="checkbox" name="tasks[]"> Task #5 </label>   <!-- Change this -->
+			    	</div>
+			  	</div>
+
+				<!-- FIND A WAY OF DISPLAYING LOCATION AND DESCRIPTION WITHOUT HAVING THEM VOTE ON IT -->
+			
+			  	<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<footer>
+			<div class="container">
+				<span>Place sticky footer content here.</span>
+			</div>
+		</footer>
+
+	    
+		<script src="create-event.js"></script>
+		<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+		<script src="libraries/jquery-ui.js"></script>
+		<script src="libraries/jquery.timepicker.js"></script>
+	</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Convenire</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="libraries/jquery-ui.css">
+		<link rel="stylesheet" href="libraries/jquery.timepicker.css">
+		<link rel="stylesheet" href="index.css">
+		<script src="https://use.fontawesome.com/a17ce52b30.js"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<h2>Create Event</h2>
+			<form>
+
+				<div class="form-group">
+					<label for="title[]">Event Title</label>
+					<a href="#" data-toggle="tooltip" title="Add a title for your event"><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<input type="text" class="form-control" placeholder="Event Title">
+						
+			    	</div>
+			  	</div>
+
+			  	<div class="form-group">
+					<label for="titles[]">Description</label>
+					<a href="#" data-toggle="tooltip" title="Add a brief description about your event"><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<textarea type="textarea" class="form-control" rows="5" style="min-width: 50%"></textarea> 
+			    	</div>
+			  	</div>
+
+			  	<div class="form-group">
+					<label for="loc">Location</label>
+					<a href="#" data-toggle="tooltip" title="Tell your guests where the event will take place. If you're not sure and you'd like them to help you decide,
+					click on the + button to add more fields."><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<input type="text" class="form-control" placeholder="Location">
+						<button class="btn btn-default add_button_loc"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+			    	</div>
+			  	</div>
+
+			  	<div class="form-group">
+					<label for="times[]">Date and Time</label>
+					<a href="#" data-toggle="tooltip" title="Select all the available times slots for the event. Your guests will be able to vote on the times that work best for them so you can guarantee maximum attendance!"><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<div class="form-group">
+							<label for="times[]" class=".sr-only"></label>
+							<input type="text" class="form-control datepicker" placeholder="Date">
+						</div>
+						<div class="form-group">
+							<label for="times[]" class=".sr-only"></label>
+							<input type="text" class="form-control timepicker" placeholder="From">
+						</div>
+						<div class="form-group">
+							<label for="times[]" class=".sr-only"></label>
+							<input type="text" class="form-control timepicker" placeholder="To">
+						</div>
+						<button class="btn btn-default add_button_times"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+					<label for="tasks[]">Tasks</label>
+					<a href="#" data-toggle="tooltip" title="Need someone to take notes? Someone to bring a snack? Someone to pick up Jimmy? Delegate and distribute the work by listing things you could use help with. Guests will be able to sign up and help you out."><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<input type="text" class="form-control" placeholder="Task" style="min-width: 30%">
+						<button class="btn btn-default add_button_task_guest"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+					<label for="guests[]">Guests</label>
+					<a href="#" data-toggle="tooltip" title="Enter the email address of all your guests, we'll send them an email with a link to the event and the password."><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<input type="email" class="form-control" placeholder="Guest" style="min-width: 30%">
+						<button class="btn btn-default add_button_task_guest"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+					<label for="pw">Password</label>
+					<a href="#" data-toggle="tooltip" title="Enter a password so only you and your guests can vote and see this event."><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<input type="text" class="form-control" placeholder="Password">
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+					<label for="adminpw">Admin Password</label>
+					<a href="#" data-toggle="tooltip" title="Enter a password that only you will know. If you want to edit the event page after this is created, enter this password"><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<input type="password" class="form-control" placeholder="Admin Pw">
+			    	</div>
+			  	</div>
+
+
+			  	<button type="submit" class="btn btn-default">Submit</button><br><br>
+			</form>
+		</div>
+
+		<footer id="footer2">
+			<div class="container">
+				<span>Place sticky footer content here.</span>
+			</div>
+		</footer>
+
+	    
+		<script src="create-event.js"></script>
+		<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+		<script src="libraries/jquery-ui.js"></script>
+		<script src="libraries/jquery.timepicker.js"></script>
+	</body>
+</html>
