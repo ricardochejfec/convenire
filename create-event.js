@@ -9,7 +9,7 @@ $(document).ready(function() {
     $(".add_button_loc").click(function(e){ //on add input button click
     	var wrapper = $(this).parent();
         e.preventDefault();
-        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" placeholder="Location"> \
+        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="locs[]" placeholder="Location" required=""> \
          <button class="btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
         $(wrapper).append($(str_to_append)); //add input box 
         
@@ -20,7 +20,8 @@ $(document).ready(function() {
         e.preventDefault();
         var sibl = $(this).siblings("input");
         var ph = $(sibl).attr("placeholder");
-        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" placeholder="'+ ph + '" style="min-width: 30%"> \
+        var nom = $(sibl).attr("name");
+        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="' + nom + '"placeholder="'+ ph + '" required="" style="min-width: 30%"> \
          <button class="btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
         $(wrapper).append($(str_to_append)); //add input box 
 
@@ -32,15 +33,15 @@ $(document).ready(function() {
         var str_to_append = '<div class="form-inline"> <br> \
                         <div class="form-group"> \
                             <label for="times[]" class=".sr-only"></label> \
-                            <input type="text" class="form-control datepicker" placeholder="Date"> \
+                            <input type="text" class="form-control datepicker" name="times[]" placeholder="Date" required=""> \
                         </div> \
                         <div class="form-group"> \
                             <label for="times[]" class=".sr-only"></label> \
-                            <input type="text" class="form-control timepicker" placeholder="From"> \
+                            <input type="text" class="form-control timepicker" name="times[]" placeholder="From" required=""> \
                         </div> \
                         <div class="form-group"> \
                             <label for="times[]" class=".sr-only"></label> \
-                            <input type="text" class="form-control timepicker" placeholder="To"> \
+                            <input type="text" class="form-control timepicker" name="times[]" placeholder="To" required=""> \
                         </div> \
                         <button class="btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
         $(wrapper).append($(str_to_append)); //add input box

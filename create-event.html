@@ -20,50 +20,50 @@
 		
 		<div class="container">
 			<h2>Create Event</h2>
-			<form method="POST" action="/create">
+			<form method="get" action="">
 
 				<div class="form-group">
-					<label for="title[]">Event Title</label>
+					<label for="title">Event Title</label>
 					<a href="#" data-toggle="tooltip" title="Add a title for your event"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Event Title" required="">
+						<input type="text" class="form-control" name="title" placeholder="Event Title" required="">
 						
 			    	</div>
 			  	</div>
 
 			  	<div class="form-group">
-					<label for="titles[]">Description</label>
+					<label for="desc">Description</label>
 					<a href="#" data-toggle="tooltip" title="Add a brief description about your event"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<textarea type="textarea" class="form-control" rows="5" style="min-width: 50%" required=""></textarea> 
+						<textarea type="textarea" class="form-control" name="desc" rows="5" style="min-width: 50%" required=""></textarea> 
 			    	</div>
 			  	</div>
 
 			  	<div class="form-group">
-					<label for="loc">Location</label>
+					<label for="locs[]">Location</label>
 					<a href="#" data-toggle="tooltip" title="Tell your guests where the event will take place. If you're not sure and you'd like them to help you decide,
 					click on the + button to add more fields."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Location" required="">
+						<input type="text" class="form-control" name="locs[]" placeholder="Location" required="">
 						<button class="btn btn-default add_button_loc"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
 			  	</div>
 
 			  	<div class="form-group">
-					<label for="times[]">Date and Time</label>
+					<label>Date and Time</label>
 					<a href="#" data-toggle="tooltip" title="Select all the available times slots for the event. Your guests will be able to vote on the times that work best for them so you can guarantee maximum attendance!"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
 						<div class="form-group">
 							<label for="times[]" class=".sr-only"></label>
-							<input type="text" class="form-control datepicker" placeholder="Date" required="">
+							<input type="text" name="times[]" class="form-control datepicker" placeholder="Date" required="">
 						</div>
 						<div class="form-group">
 							<label for="times[]" class=".sr-only"></label>
-							<input type="text" class="form-control timepicker" placeholder="From" required="">
+							<input type="text" class="form-control timepicker" name="times[]" placeholder="From" required="">
 						</div>
 						<div class="form-group">
 							<label for="times[]" class=".sr-only"></label>
-							<input type="text" class="form-control timepicker" placeholder="To" required="">
+							<input type="text" class="form-control timepicker" name="times[]" placeholder="To" required="">
 						</div>
 						<button class="btn btn-default add_button_times"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
@@ -72,15 +72,15 @@
 					<label for="tasks[]">Tasks</label>
 					<a href="#" data-toggle="tooltip" title="Need someone to take notes? Someone to bring a snack? Someone to pick up Jimmy? Delegate and distribute the work by listing things you could use help with. Guests will be able to sign up and help you out."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Task" style="min-width: 30%">
+						<input type="text" class="form-control" placeholder="Task" name="tasks[]" style="min-width: 30%">
 						<button class="btn btn-default add_button_task_guest"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
 			  	</div>
 			  	<div class="form-group">
-					<label for="guests[]">Guests</label>
+					<label for="emails[]">Guests</label>
 					<a href="#" data-toggle="tooltip" title="Enter the email address of all your guests, we'll send them an email with a link to the event and the password."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="email" class="form-control" placeholder="Guest" style="min-width: 30%">
+						<input type="email" class="form-control" name="emails[]" placeholder="Guest" style="min-width: 30%">
 						<button class="btn btn-default add_button_task_guest"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
 			  	</div>
@@ -88,14 +88,14 @@
 					<label for="pw">Password</label>
 					<a href="#" data-toggle="tooltip" title="Enter a password so only you and your guests can vote and see this event."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Password" required="">
+						<input type="text" class="form-control" name="pw" placeholder="Password" required="">
 			    	</div>
 			  	</div>
 			  	<div class="form-group">
 					<label for="adminpw">Admin Password</label>
 					<a href="#" data-toggle="tooltip" title="Enter a password that only you will know. If you want to edit the event page after this is created, enter this password"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="password" class="form-control" placeholder="Admin Password" required="">
+						<input type="password" class="form-control" name="adminpw" placeholder="Admin Password" required="">
 			    	</div>
 			  	</div>
 
