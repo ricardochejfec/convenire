@@ -20,7 +20,7 @@
 		
 		<div class="container">
 			<h2>Create Event</h2>
-			<form class="form1" method="get" action="/create">
+			<form class="form1" method="post" action="/create">
 
 				<div class="form-group">
 					<label>Event Title</label>
@@ -54,16 +54,16 @@
 					<a href="#" data-toggle="tooltip" title="Select all the available times slots for the event. Your guests will be able to vote on the times that work best for them so you can guarantee maximum attendance!"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
 						<div class="form-group">
-							<label" class=".sr-only"></label>
+							<label class=".sr-only"></label>
 							<input type="text" name="times[]" class="form-control datepicker" placeholder="Date" required="">
 						</div>
 						<div class="form-group">
-							<label" class=".sr-only"></label>
-							<input type="text" class="form-control timepicker" name="times[]" placeholder="From" required="">
+							<label class=".sr-only"></label>
+							<input type="text" class="form-control timepicker" name="times[1]" placeholder="From" required="">
 						</div>
 						<div class="form-group">
-							<label" class=".sr-only"></label>
-							<input type="text" class="form-control timepicker" name="times[]" placeholder="To" required="">
+							<label class=".sr-only"></label>
+							<input type="text" class="form-control timepicker" name="times[2]" placeholder="To" required="">
 						</div>
 						<button class="btn btn-default add_button_times"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
