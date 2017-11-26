@@ -60,7 +60,7 @@ $(document).ready(function() {
                             <input type="text" class="form-control timepicker" name="times[]" placeholder="To" required=""> \
                         </div> \
                         <button class="times btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
-        alert(times);
+
         $(wrapper).append($(str_to_append)); //add input box
 
     });
@@ -92,7 +92,7 @@ $(document).ready(function() {
             times-=3;
         }
         e.preventDefault(); $(this).parent('div').remove();
-        alert(times);
+
     });
 
   
