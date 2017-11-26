@@ -20,13 +20,13 @@
 		
 		<div class="container">
 			<h2>Create Event</h2>
-			<form>
+			<form method="POST" action="/create">
 
 				<div class="form-group">
 					<label for="title[]">Event Title</label>
 					<a href="#" data-toggle="tooltip" title="Add a title for your event"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Event Title">
+						<input type="text" class="form-control" placeholder="Event Title" required="">
 						
 			    	</div>
 			  	</div>
@@ -35,7 +35,7 @@
 					<label for="titles[]">Description</label>
 					<a href="#" data-toggle="tooltip" title="Add a brief description about your event"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<textarea type="textarea" class="form-control" rows="5" style="min-width: 50%"></textarea> 
+						<textarea type="textarea" class="form-control" rows="5" style="min-width: 50%" required=""></textarea> 
 			    	</div>
 			  	</div>
 
@@ -44,7 +44,7 @@
 					<a href="#" data-toggle="tooltip" title="Tell your guests where the event will take place. If you're not sure and you'd like them to help you decide,
 					click on the + button to add more fields."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Location">
+						<input type="text" class="form-control" placeholder="Location" required="">
 						<button class="btn btn-default add_button_loc"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
 			  	</div>
@@ -55,15 +55,15 @@
 					<div class="form-inline">
 						<div class="form-group">
 							<label for="times[]" class=".sr-only"></label>
-							<input type="text" class="form-control datepicker" placeholder="Date">
+							<input type="text" class="form-control datepicker" placeholder="Date" required="">
 						</div>
 						<div class="form-group">
 							<label for="times[]" class=".sr-only"></label>
-							<input type="text" class="form-control timepicker" placeholder="From">
+							<input type="text" class="form-control timepicker" placeholder="From" required="">
 						</div>
 						<div class="form-group">
 							<label for="times[]" class=".sr-only"></label>
-							<input type="text" class="form-control timepicker" placeholder="To">
+							<input type="text" class="form-control timepicker" placeholder="To" required="">
 						</div>
 						<button class="btn btn-default add_button_times"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
@@ -88,14 +88,14 @@
 					<label for="pw">Password</label>
 					<a href="#" data-toggle="tooltip" title="Enter a password so only you and your guests can vote and see this event."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Password">
+						<input type="text" class="form-control" placeholder="Password" required="">
 			    	</div>
 			  	</div>
 			  	<div class="form-group">
 					<label for="adminpw">Admin Password</label>
 					<a href="#" data-toggle="tooltip" title="Enter a password that only you will know. If you want to edit the event page after this is created, enter this password"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="password" class="form-control" placeholder="Admin Pw">
+						<input type="password" class="form-control" placeholder="Admin Password" required="">
 			    	</div>
 			  	</div>
 
