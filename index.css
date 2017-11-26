@@ -23,8 +23,9 @@ div.ui-datepicker {
 }
 
 h1 {
-    letter-spacing: 4px;
-    font-size: 5rem;
+    letter-spacing: 3rem;
+    text-indent: 3rem;
+    font-size: 6rem;
 }
 
 

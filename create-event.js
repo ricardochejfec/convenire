@@ -66,7 +66,7 @@ $(document).ready(function() {
     });
 
     $('body').on('focus',".datepicker", function(){
-        $(this).datepicker();
+        $(this).datepicker({ dateFormat: 'yy-mm-dd' });
     });
 
     $('body').on('focus',".timepicker", function(){
