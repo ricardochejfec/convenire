@@ -71,6 +71,7 @@ $(document).ready(function() {
 
     $('body').on('focus',".timepicker", function(){
         $(this).timepicker({
+            timeFormat: 'HH:mm',
             interval: 15,
             startTime: '11:00am',
             dynamic: true
