@@ -1,0 +1,172 @@
+
+
+
+/*rgba(241,54,102,1)*/
+/*#f4eba0 */
+/*rgba(135,72,241,1)*/
+/*
+.site-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}*/
+
+/*rgba(240,250,202,1);*/
+    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+
+/*font-family: 'Quicksand', sans-serif;
+font-family: 'Bungee Shade', cursive;
+font-family: 'Bungee', cursive;
+font-family: 'Mogra', cursive;*/
+body{
+    /*background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);*/
+    background-color: rgba(244,235,160,1);
+}
+
+th{
+    
+    text-align: center;
+}
+
+table{
+    text-align: center;
+}
+.panel-primary{
+    
+    border-color: rgba(241,54,102,1);
+    background-color: rgba(241,54,102,1);
+}
+.panel-primary > .panel-heading{
+    
+    border-color: rgba(241,54,102,1);
+    background-color: rgba(241,54,102,1);
+}
+
+.btn-primary {
+    
+    background-color: rgba(241,54,102,1);
+}
+button{
+    /*background-color: rgba(135,72,241,1);
+    color:white;*/
+    background-color: white;
+    color:rgba(135,72,241,1);
+}
+
+
+.navbar{
+
+
+}
+.alert{
+    margin-top: 15px;
+}
+
+.navbar-brand{
+    color: rgba(241,54,102,1) !important;
+    font-family: 'Bungee';
+    /*font-family: 'Quicksand', sans-serif;*/
+    /*font-family: 'Bungee Shade', cursive;*/
+    letter-spacing: .5rem;
+}
+
+#navbar a {
+    color: rgba(241,54,102,1) !important;
+    font-weight: 600;
+}
+
+.text-just {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+label{
+    color:rgba(135,72,241,1);
+}
+
+#tit{
+    color:rgba(135,72,241,1);
+}
+
+.wrapper {
+    margin-top: 80px;
+
+
+}
+
+.carousel {
+    border-radius: 55px 55px 55px 55px;
+    overflow: hidden;
+}
+
+.carousel-caption {
+
+    top:30%;
+    left:25%;
+    bottom: auto;
+    color:black;
+}
+
+div.ui-datepicker {
+    font-size: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'bungee';
+    color: rgba(241,54,102,1);
+    
+}
+.sub {
+    font-family: 'Mogra', cursive;
+    text-shadow: 1px 1px 8px white;
+    font-size: 3rem;
+    text-indent: 1rem;
+    letter-spacing: 1rem;
+}
+
+
+footer {
+    padding-top: 10px;
+    position: absolute;
+    margin:0;
+    bottom:0;
+    width: 100%;
+    height: 40px;
+    /*background-color: #000;*/
+    background-color: rgba(241,54,102,1);
+    color:white;
+}
+
+#footer2 {
+    position: static;
+    bottom:0;
+
+}
+
+
+
+
+
+
+ .message-wrap
+    {
+        box-shadow: 0 0 10px #ddd;
+        padding:0;
+
+    }
+    .msg
+    {
+        padding:5px;
+        /*border-bottom:1px solid #ddd;*/
+        margin:0;
+    }
+    .msg-wrap
+    {
+        padding:10px;
+        max-height: 400px;
+        overflow: auto;
+
+    }
+

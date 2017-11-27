@@ -11,10 +11,30 @@
 </head>
     
 <body>
-<div  style="padding-bottom: 10px;padding-top: 10px; text-align: center; background-color: deepskyblue; color: white"class="jumbotron">
-  <h1 style="display: inline;">Convenire </h1> <h3 style="display: inline;"> Let's meet up</h3>
-  
-</div>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#">CONVENIRE</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav">
+	            <li class="active"><a href="#">Home</a></li>
+	            <li><a href="#about">About</a></li>
+	            <li><a href="#contact">Contact</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </nav>
+<div class="wrapper">
+    <h1>Web dev 1st meeting</h1>
+    
 <div class="container">
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
@@ -33,7 +53,12 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="Main" role="tabpanel">1</div>
+  <div class="tab-pane active" id="Main" role="tabpanel">
+    
+    
+    
+    
+    </div>
   <div class="tab-pane" id="Polls" role="tabpanel" style="padding-top: 15px">
     <div class="col-md-6">
             <div class="panel panel-primary">
@@ -48,7 +73,23 @@
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="optionsRadios">
-                                    Good
+                                    Trottier First floor
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios">
+                                    Mclennan next to the computers 1st floor
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="optionsRadios">
+                                    Ricardo's appartment
                                 </label>
                             </div>
                         </li>
@@ -57,7 +98,7 @@
                 <div class="panel-footer">
                     <button type="button" class="btn btn-primary btn-sm">
                         Vote</button>
-                    <a href="#">View Result</a></div>
+                    </div>
             </div>
         </div>
       <div class="col-md-6">
@@ -73,7 +114,23 @@
                             <div class="radio">
                                 <label>
                                     <input type="checkbox" name="optionsRadios">
-                                    Good
+                                    Sunday, 11/26/2017 10:00 to 11:00
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="checkbox" name="optionsRadios">
+                                    Tuesday, 11/28/2017 14:00 to 15:00
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="radio">
+                                <label>
+                                    <input type="checkbox" name="optionsRadios">
+                                    Wednesday, 11/29/2017 18:00 to 19:00
                                 </label>
                             </div>
                         </li>
@@ -82,15 +139,15 @@
                 <div class="panel-footer">
                     <button type="button" class="btn btn-primary btn-sm">
                         Vote</button>
-                    <a href="#">View Result</a></div>
+                    </div>
             </div>
         </div>
-    
-</div>
+    </div>
+
   <div class="tab-pane" id="TasksAndDiscussion" role="tabpanel">
-   <div style="text-align: center" class="alert alert-success">
+  <div style="text-align: center" class="alert alert-success">
   <strong>Tasks</strong> 
-</div>
+  </div>
   <form>
   <table class="table table-inverse">
   <thead class="thead-inverse">
@@ -104,30 +161,34 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
+      <td>Bring donuts</td>
       <td><input type="TEXT" name="email" size="25"></td>
       <td><input type="TEXT" name="email" size="25"></td>
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Jacob</td>
+      <td>Bring website layout</td>
       <td><input type="TEXT" name="email" size="25"></td>
       <td><input type="TEXT" name="email" size="25"></td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
+      <td>Take notes of meeting</td>
       <td><input type="TEXT" name="email" size="25"></td>
       <td><input type="TEXT" name="email" size="25"></td>
     </tr>
   </tbody>
+      
 </table>
-<p><input TYPE="SUBMIT" VALUE="Submit" NAME="B1"></p>
+
+               <button type="button" class="btn btn-primary btn-sm">
+                        Assign</button>
+        
 </form>
     <div style="text-align: center" class="alert alert-success">
   <strong>Discussion</strong> 
 </div>
-   <div class="container">
+   <div class="">
     
     <div class="row">
 
@@ -138,55 +199,42 @@
 
                 <div class="media msg ">
                     <a class="pull-left" href="#">
-                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="">
+                        
                     </a>
                     <div class="media-body">
-                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-                        <h5 class="media-heading">Naimish Sakhpara</h5>
-                        <small class="col-lg-10">Location H-2, Ayojan Nagar, Near Gate-3, Near
-                            Shreyas Crossing Dharnidhar Derasar,
-                            Paldi, Ahmedabad 380007, Ahmedabad,
-                            India
-                            Phone 091 37 669307
-                            Email aapamdavad.district@gmail.com</small>
-                    </div>
-                </div>
-                <div class="alert alert-info msg-date">
-                    <strong>Today</strong>
-                </div>
-                <div class="media msg">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="">
-                    </a>
-                    <div class="media-body">
-                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-
-                        <h5 class="media-heading">Naimish Sakhpara</h5>
-                        <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
+                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:13am</small>
+                        <h5 class="media-heading">andre.rodriguez@mail.mcgill.ca</h5>
+                        <small class="col-lg-10">I can bring the donuts, there's a Tims on my way.</small>
                     </div>
                 </div>
                 <div class="media msg">
                     <a class="pull-left" href="#">
-                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="">
+                       
                     </a>
                     <div class="media-body">
-                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
+                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:14am</small>
 
-                        <h5 class="media-heading">Naimish Sakhpara</h5>
-                        <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
+                        <h5 class="media-heading">ricardo.chefjec@mail.mcgill.ca</h5>
+                        <small class="col-lg-10">Sounds good. I volunteer to take notes.</small>
+                    </div>
+                </div>
+                <div class="media msg">
+                    <a class="pull-left" href="#">
+                    
+                    </a>
+                    <div class="media-body">
+                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:15am</small>
+
+                        <h5 class="media-heading">phil.kwanfong@mail.mcgill.ca</h5>
+                        <small class="col-lg-10">I'll bring the layout then.</small>
                     </div>
                 </div>
 
                 <div class="media msg">
                     <a class="pull-left" href="#">
-                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 32px; height: 32px;" src="">
+                       
                     </a>
-                    <div class="media-body">
-                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-                        <h5 class="media-heading">Naimish Sakhpara</h5>
-
-                        <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
-                    </div>
+                
                 </div>
 
             </div>
@@ -198,7 +246,8 @@
 
             </div>
             <div class="btn-panel">
-                <a href="" class=" col-lg-4 text-right btn   send-message-btn pull-right" role="button"><i class="fa fa-plus"></i> Send Message</a>
+               <button type="button" class="btn btn-primary btn-sm" style="float:right">
+                        Send Message</button>
             </div>
         </div>
     </div>
@@ -208,6 +257,6 @@
 
 </div>
 </div>
-
+</div>
 </body>
 </html>
