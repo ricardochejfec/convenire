@@ -51,6 +51,15 @@ table{
     padding:20px;
 }
 
+.main-cont {
+    padding:20px;
+    padding-left: 40px;
+}
+
+.main-cont label {
+    font-size: 2rem;
+}
+
 .btn-primary {
     
     background-color: rgba(241,54,102,1);
@@ -69,6 +78,8 @@ button{
 
 
 }
+
+
 .alert{
     margin-top: 15px;
 }
@@ -83,7 +94,7 @@ button{
 
 #navbar a {
     color: rgba(241,54,102,1) !important;
-    font-family: default;
+    font-family: 'Helvetica';
     font-weight: 600;
 }
 
