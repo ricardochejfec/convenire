@@ -13,9 +13,71 @@
 /*rgba(240,250,202,1);*/
     /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 
+/*font-family: 'Quicksand', sans-serif;
+font-family: 'Bungee Shade', cursive;
+font-family: 'Bungee', cursive;
+font-family: 'Mogra', cursive;*/
+body{
+    /*background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);*/
+    background-color: rgba(244,235,160,1);
+}
+
+button{
+    /*background-color: rgba(135,72,241,1);
+    color:white;*/
+    background-color: white;
+    color:rgba(135,72,241,1);
+}
+
+
+.navbar{
+
+
+}
+
+.navbar-brand{
+    color: rgba(241,54,102,1) !important;
+    font-family: 'Bungee', cursive;
+    /*font-family: 'Quicksand', sans-serif;*/
+    /*font-family: 'Bungee Shade', cursive;*/
+    letter-spacing: .5rem;
+}
+
+#navbar a {
+    color: rgba(241,54,102,1) !important;
+    font-weight: 600;
+}
+
+.text-just {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+label{
+    color:rgba(135,72,241,1);
+}
+
+#tit{
+    color:rgba(135,72,241,1);
+}
+
+.wrapper {
+    margin-top: 80px;
+
+
+}
+
+.carousel {
+    border-radius: 55px 55px 55px 55px;
+    overflow: hidden;
+}
+
 .carousel-caption {
-    top:0;
+
+    top:30%;
+    left:25%;
     bottom: auto;
+    color:black;
 }
 
 div.ui-datepicker {
@@ -23,24 +85,39 @@ div.ui-datepicker {
 }
 
 h1 {
-    letter-spacing: 4rem;
-    text-indent: 4rem;
+    /*font-family: 'Bungee Shade', cursive;*/
+    font-family: 'Bungee', cursive;
+    text-shadow: 3px 3px 1px white;
+    letter-spacing: 2rem;
+    text-indent: 2rem;
     font-size: 6rem;
 }
 
+.sub {
+    font-family: 'Mogra', cursive;
+    text-shadow: 1px 1px 8px white;
+    font-size: 3rem;
+    text-indent: 1rem;
+    letter-spacing: 1rem;
+}
 
 
 footer {
     padding-top: 10px;
     position: absolute;
-    bottom: 0;
+    margin:0;
+    bottom:0;
     width: 100%;
     height: 40px;
-    background-color: #f5f5f5;
+    /*background-color: #000;*/
+    background-color: rgba(241,54,102,1);
+    color:white;
 }
 
 #footer2 {
     position: static;
+    bottom:0;
+
 }
 
 

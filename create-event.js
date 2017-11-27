@@ -73,7 +73,7 @@ $(document).ready(function() {
         $(this).timepicker({
             timeFormat: 'HH:mm',
             interval: 15,
-            startTime: '11:00am',
+            startTime: '6:00am',
             dynamic: true
         });
     });

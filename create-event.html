@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="libraries/jquery-ui.css">
 		<link rel="stylesheet" href="libraries/jquery.timepicker.css">
+		<link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade|Mogra|Quicksand" rel="stylesheet">
 		<link rel="stylesheet" href="index.css">
 		<script src="https://use.fontawesome.com/a17ce52b30.js"></script>
 
@@ -17,10 +18,31 @@
 	</head>
 
 	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#">CONVENIRE</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav">
+	            <li class="active"><a href="#">Home</a></li>
+	            <li><a href="#about">About</a></li>
+	            <li><a href="#contact">Contact</a></li>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </nav>
 		
-		<div class="container">
-			<h2>Create Event</h2>
-			<form class="form1" method="post" action="/create">
+		<div class="wrapper container text-just text-center">
+			<h2 id="tit">Create Event</h2>
+			<br>
+			<form class="form1 text-left" method="post" action="/create">
 
 				<div class="form-group">
 					<label>Event Title</label>
@@ -74,6 +96,13 @@
 					<div class="form-inline">
 						<input type="text" class="form-control" placeholder="Task" name="tasks[]" style="min-width: 30%">
 						<button class="btn btn-default add_button_task_guest"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+					<label>Your Email</label>
+					<a href="#" data-toggle="tooltip" title="Enter your email address."><span class="glyphicon glyphicon-info-sign"></span></a>
+					<div class="form-inline">
+						<input type="email" class="form-control" name="emails[1]" placeholder="Your Email" style="min-width: 30%">
 			    	</div>
 			  	</div>
 			  	<div class="form-group">
