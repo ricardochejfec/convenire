@@ -15,7 +15,7 @@ $(document).ready(function() {
     	var wrapper = $(this).parent();
         e.preventDefault();
 
-        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="locs[' + locs + ']" placeholder="Location" required=""> \
+        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="locs[' + locs + ']" placeholder="Location" style="min-width: 89%" required=""> \
          <button class="locs btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
         $(wrapper).append($(str_to_append)); //add input box
         locs++;
@@ -37,7 +37,7 @@ $(document).ready(function() {
             clss = 'emails';
             emails++;
         }
-        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="' + nom + '"  placeholder="'+ ph + '" required="" style="min-width: 30%"> \
+        var str_to_append = '<div class="form-inline"> <br><input type="text" class="form-control" name="' + nom + '"  placeholder="'+ ph + '" required="" style="min-width: 89%"> \
          <button class="'+ clss + ' btn btn-default remove_field"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>';
         $(wrapper).append($(str_to_append)); //add input box 
 

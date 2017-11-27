@@ -27,11 +27,11 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#">CONVENIRE</a>
+	          <a class="navbar-brand" href="index.html">CONVENIRE</a>
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="#">Home</a></li>
+	            <li class="active"><a href="index.html">Home</a></li>
 	            <li><a href="#about">About</a></li>
 	            <li><a href="#contact">Contact</a></li>
 	          </ul>
@@ -41,7 +41,7 @@
 		
 		<div class="wrapper container text-just text-center">
 			<h2 id="tit">Create Event</h2>
-			<br>
+			<br><br>
 			<form class="form1 text-left" method="post" action="/create">
 
 				<div class="form-group">
@@ -57,7 +57,7 @@
 					<label>Description</label>
 					<a href="#" data-toggle="tooltip" title="Add a brief description about your event"><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<textarea type="textarea" class="form-control" name="desc" rows="5" style="min-width: 50%" required=""></textarea> 
+						<textarea type="textarea" class="form-control" name="desc" rows="5" style="min-width: 89%" required=""></textarea> 
 			    	</div>
 			  	</div>
 
@@ -66,7 +66,7 @@
 					<a href="#" data-toggle="tooltip" title="Tell your guests where the event will take place. If you're not sure and you'd like them to help you decide,
 					click on the + button to add more fields."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" name="locs[]" placeholder="Location" required="">
+						<input type="text" class="form-control" name="locs[]" placeholder="Location" required="" style="min-width: 89%">
 						<button class="btn btn-default add_button_loc"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
 			  	</div>
@@ -94,7 +94,7 @@
 					<label>Tasks</label>
 					<a href="#" data-toggle="tooltip" title="Need someone to take notes? Someone to bring a snack? Someone to pick up Jimmy? Delegate and distribute the work by listing things you could use help with. Guests will be able to sign up and help you out."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="text" class="form-control" placeholder="Task" name="tasks[]" style="min-width: 30%">
+						<input type="text" class="form-control" placeholder="Task" name="tasks[]" style="min-width: 89%">
 						<button class="btn btn-default add_button_task_guest"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
 			  	</div>
@@ -102,14 +102,14 @@
 					<label>Your Email</label>
 					<a href="#" data-toggle="tooltip" title="Enter your email address."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="email" class="form-control" name="emails[1]" placeholder="Your Email" style="min-width: 30%">
+						<input type="email" class="form-control" name="emails[1]" placeholder="Your Email" style="min-width: 89%">
 			    	</div>
 			  	</div>
 			  	<div class="form-group">
 					<label>Guests</label>
 					<a href="#" data-toggle="tooltip" title="Enter the email address of all your guests, we'll send them an email with a link to the event and the password."><span class="glyphicon glyphicon-info-sign"></span></a>
 					<div class="form-inline">
-						<input type="email" class="form-control" name="emails[]" placeholder="Guest" style="min-width: 30%">
+						<input type="email" class="form-control" name="emails[]" placeholder="Guest" style="min-width: 89%">
 						<button class="btn btn-default add_button_task_guest"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 			    	</div>
 			  	</div>

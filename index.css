@@ -18,8 +18,11 @@ font-family: 'Bungee Shade', cursive;
 font-family: 'Bungee', cursive;
 font-family: 'Mogra', cursive;*/
 body{
-    /*background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);*/
-    background-color: rgba(244,235,160,1);
+    background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*background-color: rgba(192,250,202,1);*/
+    /*rgba(244,235,160,1);*/
 }
 
 button{
@@ -55,10 +58,14 @@ button{
 
 label{
     color:rgba(135,72,241,1);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
 }
 
 #tit{
     color:rgba(135,72,241,1);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 4rem;
 }
 
 .wrapper {
