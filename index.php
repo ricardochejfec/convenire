@@ -7,6 +7,11 @@ require 'db.php';
 
 $app = new \Slim\App;
 
+$app->post("/Events/{eventID}/home", function ($request, $response, $args) {
+    header("Location: /event.html");
+    exit;
+});
+
 //Code when user goes to the event url
 $app->any("/Events/{eventID}", function ($request, $response, $args) {
     $fullUrl = $_SERVER['REQUEST_URI'];
@@ -24,7 +29,8 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
         if($rows == 1)
         {
             $sql_title = "SELECT EventTitle FROM Events where EventId = '$eventID'";  
-            $title = $db->query($sql_title);            
+            $stmt_title = $db->query($sql_title);
+            $title = $stmt_title->fetch(PDO::FETCH_ASSOC);            
 
             echo '
             <!DOCTYPE html>
@@ -34,16 +40,16 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-                <link rel="stylesheet" href="event_login.css">
+                <link rel="stylesheet" href="/event_login.css">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                <script src="index.js"></script>
+                <script src="/index.js"></script>
               </head>
               
               <body>
                 <div class="wrapper">
-                  <form class="form-signin">       
-                    <h2 class="form-signin-heading">Sign in to ' . $title . '!</h2>
+                  <form class="form-signin" method="post" action="/Events/' . $eventID .'/home">       
+                    <h2 class="form-signin-heading">Sign in to ' . $title['EventTitle'] . '!</h2>
                     <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
                     <input type="text" class="form-control" name="name" placeholder="Name" required=""/>
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
@@ -62,11 +68,11 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
             </html>
             ';
         }
-        else
-        {
-            header("Location: ../index.html");
-            exit;
-        }
+        // else
+        // {
+        //     header("Location: /index.html");
+        //     exit;
+        // }
     
     $db = null;
     } catch(PDOException $e) {
@@ -166,7 +172,8 @@ $app->post('/create', function ($request, $response, $args) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
         }
         
-    header('Location: https://google.ca');
+    header("Location: /Events/$eventID");
+    //exit;
 });
 
 $app->run();
