@@ -11,8 +11,7 @@ $app = new \Slim\App([
     ]
 ]);
 
-
-
+$user = '';
 //Code when user goes to the event login url
 $app->any("/Events/{eventID}", function ($request, $response, $args) {
     $fullUrl = $_SERVER['REQUEST_URI'];
@@ -53,10 +52,10 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
                 <div class="wrapper">
                   <form class="form-signin" method="post" action="/Events/' . $eventID .'/home">       
                     <h2 class="form-signin-heading">Sign in to ' . $title  . '!</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+                    <input type="text" id="username" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
                     <input type="text" class="form-control" name="name" placeholder="Name" required=""/>
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+                    <button id="loginbtn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
                   </form>
                 </div>
             
@@ -81,7 +80,6 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
     } catch(PDOException $e) {
     echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
-
 });
 
 $app->any('/Events/{eventID}/home', function ($request, $response, $args){
@@ -265,19 +263,20 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
             
             $checked = password_verify($pwdInputted , $eventPwd);
 
-            /* create a prepared statement */
+            
             $stmt = $db->prepare("SELECT Email FROM eventEmails WHERE eventId= :eventID AND email = :emailInputted");
             
-                /* bind parameters for markers */
+            
             $stmt->bindParam(":eventID", $eventID);
             $stmt->bindParam(":emailInputted", $emailInputted);
-            /* execute query */
+            
             $stmt->execute();
             
-            /* bind result variables */
+            
             if ($stmt->rowCount() > 0){
 
                 $_SESSION['checked'] = $checked;
+                if($_SESSION['checked']){$_SESSION['user'] = $emailInputted;}
             } else{
 
                 $_SESSION['checked'] = 0;
@@ -386,7 +385,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                                     </h3>
                                 </div>
                                     <div class="panel-body">
-                                        <ul class="list-group">
+                                        <ul id="LocList" class="list-group">
                                             ' . $pollLocScript . '
                                         </ul>
                                     </div>
@@ -404,7 +403,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                                         </h3>
                                     </div>
                                     <div class="panel-body">
-                                        <ul class="list-group"> 
+                                        <ul id="timeList" class="list-group"> 
                                             ' . $pollTimeScript . '
                                         </ul>
                                     </div>
@@ -444,8 +443,8 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                           
                           <div class="">
                               <div class="row"> 
-                                  <div class="message-wrap col-sm-12">
-                                      <div class="msg-wrap">
+                                  <div style="overflow-y= scroll class="message-wrap col-sm-12">
+                                      <div id="chat" class="msg-wrap" style="overflow-y= scroll;">
                                           <div class="media msg ">
                                               <a class="pull-left" href="#"></a>
                                               <div class="media-body">
@@ -456,31 +455,15 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                                           </div>
                                           <div class="media msg">
                                               <a class="pull-left" href="#"></a>
-                                              <div class="media-body">
-                                                  <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:14am</small>
-                                                  <h5 class="media-heading">ricardo.chefjec@mail.mcgill.ca</h5>
-                                                  <small class="col-lg-10">Sounds good. I volunteer to take notes.</small>
-                                              </div>
-                                          </div>
-                                          <div class="media msg">
-                                              <a class="pull-left" href="#"></a>
-                                              <div class="media-body">
-                                                  <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:15am</small>
-                                                  <h5 class="media-heading">phil.kwanfong@mail.mcgill.ca</h5>
-                                                  <small class="col-lg-10">Ill bring the layout then.</small>
-                                              </div>
-                                          </div>
-                                          <div class="media msg">
-                                              <a class="pull-left" href="#"></a>
                                           </div>
                                       </div>
             
                                       <div class="send-wrap ">
-                                          <textarea class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
+                                          <textarea id="textSent" class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
                                       </div>
             
                                       <div class="btn-panel">
-                                         <button type="button" class="btn btn-primary btn-sm" style="float:right">Send Message</button>
+                                         <button id="MsgBtn" type="button" class="btn btn-primary btn-sm" style="float:right">Send Message</button>
                                       </div>
                                   </div>
                               </div>
@@ -589,7 +572,6 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
     catch(exception $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
         }
-
 });
 
 $app->get('/updateTasks', function ($request, $response, $args){
@@ -627,20 +609,174 @@ $app->get('/updateTasks', function ($request, $response, $args){
 
     header("Location: /Events/". $eventID . "/home");
     exit;
-
 });
-$app->get('/updatepoll', function ($request, $response, $args){
-
-    $eventID = $request->getParam('eventID');
+$app->get('/updatelocationpoll', function ($request, $response, $args){
+    $db = getDB();
+    $eventID = $request->getParam('eventId');
     $locName = $request->getParam('address');
-    $sql = $db->prepare("UPDATE LocationPoll SET  votes = votes + 1   WHERE eventID = ? and address = ?;"); 
-    $sql->bindParam(1,$eventID);
-    $sql->bindParam(2, $locName);
+    $user = $request->getParam('email');
+
+    $sql = $db->prepare('SELECT votedLoc from eventEmails  WHERE eventID = :eId and email = :user ;'); 
+
+    $sql->bindParam(':eId',$eventID);
+    $sql->bindParam(':user', $user);
     $sql->execute();
+
+    $vot = $sql->fetchAll();
+    $voted = $vot[0];
+
+
+
+
+    if(!$voted){
+
+        $sql = $db->prepare('UPDATE LocationPoll SET  votes = 100   WHERE eventID = :eId and address = :addr ;'); 
+
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':addr', $locName);
+        $sql->execute();
+    
+        $sql = $db->prepare('UPDATE eventEmails SET  votedLoc = 1 , location = :addr  WHERE eventID = :eId and email = :user ;'); 
+    
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':addr', $locName);
+        $sql->bindParam(':user', $user);
+        $sql->execute();
+    
+        $sql = $db->prepare('SELECT eventID, address, votes from LocationPoll WHERE eventID = :eId order by votes DESC;'); 
+    
+        $sql->bindParam(':eId',$eventID);
+        
+        $sql->execute();
+        $res = $sql->fetchAll();
+
+
+
+    } else {
+
+        $sql = $db->prepare('SELECT location from eventEmails WHERE eventID = :eId and email = :user ;'); 
+    
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':user', $user);
+        
+        $sql->execute();
+        $arr = $sql->fetchAll();
+        $oldLoc = $arr[0][0];
+
+        $sql = $db->prepare('UPDATE eventEmails SET  votedLoc = 1 , location = :addr  WHERE eventID = :eId and email = :user ;'); 
+    
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':addr', $locName);
+        $sql->bindParam(':user', $user);
+        $sql->execute();
+
+        $sql = $db->prepare('UPDATE LocationPoll SET  votes = votes - 1   WHERE eventID = :eId and address = :oldLoc ;'); 
+
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':oldLoc', $oldLoc);
+        $sql->execute();
+
+        $sql = $db->prepare('UPDATE LocationPoll SET  votes = votes + 1   WHERE eventID = :eId and address = :addr ;'); 
+
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':addr', $locName);
+        $sql->execute();
+
+        $sql = $db->prepare('SELECT eventID, address, votes from LocationPoll WHERE eventID = :eId order by votes DESC;'); 
+    
+        $sql->bindParam(':eId',$eventID);
+        
+        $sql->execute();
+        $res = $sql->fetchAll();
+
+
+    }
 
     
 
+
+    $response->getBody()->write(json_encode($res));
 });
+
+$app->get('/updatetimeepoll', function ($request, $response, $args){
+    $db = getDB();
+    $eventID = $request->getParam('eventId');
+    $timearr = $request->getParam('timearr');
+    str_replace('"', "", $eventID);
+    $user = $request->getParam('email');;
+    
+    $sql = $db->prepare('SELECT votedTime from eventEmails  WHERE eventID = :eId and email = :user ;'); 
+
+    $sql->bindParam(':eId',$eventID);
+    $sql->bindParam(':user', $user);
+    $sql->execute();
+
+    $vot = $sql->fetchAll();
+    $voted = $vot[0];
+
+
+    $i = 0;
+    while($i<sizeof($timearr)){
+
+        $sql = $db->prepare('UPDATE TimePoll SET  votes = votes + 1   WHERE eventID = :eId and date = :dat and StartTime =:start and EndTime = :end ;'); 
+
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':dat', $timearr[$i]["date"]);
+        $sql->bindParam(':start', $timearr[$i]["start"]);
+        $sql->bindParam(':end', $timearr[$i]["end"]);
+        $sql->execute();
+        $i = $i +1;
+    }
+
+    $sql = $db->prepare('SELECT eventID, date,StartTime, EndTime, votes from TimePoll WHERE eventID = :eId order by votes ;'); 
+
+    $sql->bindParam(':eId',$eventID);
+    
+    
+    $sql->execute();
+    $res = $sql->fetchAll();
+
+
+    $response->getBody()->write(json_encode($res));
+});
+
+$app->get('/chatUpdate', function ($request, $response, $args){
+
+    $db = getDB();
+    $eventID = $request->getParam('eventId');
+    $sql = $db->prepare('SELECT email, comment, date, time from  TaskDiscussion where eventId = :eventID order by Date, time ASC;'); 
+    $sql->bindParam(':eventID',$eventID);
+    $sql->execute();
+    $res = $sql->fetchAll();
+
+
+    $response->getBody()->write(json_encode($res));
+
+
+});
+
+$app->get('/messageToChat', function ($request, $response, $args){
+
+    $db = getDB();
+    $eventID = $request->getParam('eventId');
+    $date = $request->getParam('date');
+    $time = $request->getParam('time');
+    $user = $request->getParam('email');
+    $msg = $request->getParam('message');
+    
+    $sql = $db->prepare('INSERT INTO TaskDiscussion VALUES (:eId , :user, :msg, :dat , :tim ) ;'); 
+
+    $sql->bindParam(':eId',$eventID);
+    $sql->bindParam(':user', $user);
+    $sql->bindParam(':msg', $msg);
+    $sql->bindParam(':dat', $date);
+    $sql->bindParam(':tim', $time);
+    $sql->execute();
+
+    header("Location: /chatUpdate");
+    exit;
+});
+
 //Code for event creation page, adds all the user input into the database
 $app->post('/create', function ($request, $response, $args) {
 
