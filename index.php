@@ -70,11 +70,11 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
             </html>
             ';
         }
-        // else
-        // {
-        //     header("Location: /index.html");
-        //     exit;
-        // }
+        else
+        {
+            header("Location: /index.html");
+            exit;
+        }
     
     $db = null;
     } catch(PDOException $e) {
@@ -315,11 +315,11 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">CONVENIRE</a>
+                        <a class="navbar-brand" href="/">CONVENIRE</a>
                       </div>
                       <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                          <li><a href="index.html">Home</a></li>
+                          <li><a href="/">Home</a></li>
                           <li><a href="event_login.html">About</a></li>
                           <li><a href="#contact">Contact</a></li>
                         </ul>
