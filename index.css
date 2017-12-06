@@ -74,6 +74,8 @@ label{
     font-size: 2rem;
 }
 
+
+
 #tit{
     color:rgba(135,72,241,1);
     font-family: 'Quicksand', sans-serif;
@@ -136,6 +138,11 @@ div.ui-datepicker {
     margin-left: 16rem;
     margin-right: 16rem;
 }
+
+.bodytext span {
+    font-family: 'Bungee', cursive;
+}
+
 
 
 
