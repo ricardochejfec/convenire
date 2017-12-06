@@ -1,8 +1,13 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use \phpmailer\phpmailer\phpmailer;
+use \phpmailer\phpmailer\Exception;
 
 require '../vendor/autoload.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 require 'db.php';
 
 $app = new \Slim\App([
@@ -806,8 +811,6 @@ $app->post('/create', function ($request, $response, $args) {
             $verify = $db->query($sql_verify);
             
             $rows = $verify->rowCount();
-
-            
                         
             if($rows == 0)
             {
@@ -857,6 +860,10 @@ $app->post('/create', function ($request, $response, $args) {
                 //Add the emails to the database
                 if(count($emails) > 0)
                 {
+                    $sql_emails = "INSERT INTO EventEmails (EventId, Email)
+                                 VALUES ('$eventID', '$creator')";
+                    $stmt_emails = $db->query($sql_emails);
+
                     for($i = 0; $i < count($emails); $i++)
                     {
                         $sql_emails = "INSERT INTO EventEmails (EventId, Email)
@@ -875,9 +882,98 @@ $app->post('/create', function ($request, $response, $args) {
         } catch(PDOException $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
         }
+
+        $mailer = new PHPMailer;
+        $mailer->isSMTP();
+        $mailer->SMTP = true;
+        $mailer->SMTPAuth = true;
+        $mailer->SMTPDebug = 2;
+        $mailer->Host = 'smtp.gmail.com';
+        $mailer->Username = 'letsconvenire@gmail.com';
+        $mailer->Password = 'convenire1';
+        $mailer->SMTPSecure = 'ssl';
+        $mailer->Port = 465;
+    
+        $subjectAdmin = "New event creation!";
+        $message = "Hello,
+                    <br/> <br/>
+                    find below the passwords to access your new event, along with the secret link:
+                    link:
+                    <br/> <br/>                
+                    convenire.com/Events/" . $eventID .
+                    "<br/> <br/>
+                    admin password:
+                    " . $adminpw .
+                    "<br/> <br/>
+                    guest password:
+                    " . $pw .
+                    "<br/> <br/>
+                    Thank you for using Convenire!
+                    <br/> <br/>
+                    The Convenire team";
+    
+        $mailer->From = 'letsconvenire@gmail.com';
+        $mailer->FromName = 'Convenire';
+        $mailer->addReplyTo('letsconvenire@gmail.com','Reply address');
+        $mailer->addAddress('letsconvenire@gmail.com', 'Convenire');
+        $mailer->addAddress($creator, 'Event Creator');
+        $mailer->Subject = $subjectAdmin;
+        $mailer->Body = $message;
+        $mailer->AltBody = $message;
+    
+        if($mailer->send())
+        {
+        }
+        else
+        {
+            //echo $mailer->ErrorInfo;
+        }
+    
+        $mailer2 = new PHPMailer;
+        $mailer2->isSMTP();
+        $mailer2->SMTP = true;
+        $mailer2->SMTPAuth = true;    
+        $mailer2->SMTPDebug = 2;
+        $mailer2->Host = 'smtp.gmail.com';
+        $mailer2->Username = 'letsconvenire@gmail.com';
+        $mailer2->Password = 'convenire1';
+        $mailer2->SMTPSecure = 'ssl';
+        $mailer2->Port = 465;
+    
+        $subject = "Invitation to " . $title . " !";
+        $message = "Hello,<br/> <br/>
+                    find below the password to access " . $title . " at convenire.com/Events/" . $eventID . " :
+                    password:
+                    <br/> <br/>
+                    " . $pw .
+                    "<br/> <br/>
+                    Thank you for using Convenire!
+                    <br/> <br/>
+                    The Convenire team";
         
-    header("Location: /Events/$eventID");
-    exit;
+        $mailer2->From = 'letsconvenire@gmail.com';
+        $mailer2->FromName = 'Convenire';
+        $mailer2->addReplyTo('letsconvenire@gmail.com','Reply address');
+        $mailer2->addAddress('letsconvenire@gmail.com', 'Convenire');
+        $mailer2->Subject = $subject;
+        $mailer2->Body = $message;
+        $mailer2->AltBody = $message;
+    
+        for($i = 0; $i < count($emails); $i++)
+        {
+            $mailer2->addBCC($emails[$i], 'Guest');
+        }
+    
+        if($mailer2->send())
+        {
+        }
+        else
+        {
+            //echo $mailer->ErrorInfo;
+        }
+        
+        header("Location: /Events/$eventID");
+        exit;
 });
 
 $app->run();
