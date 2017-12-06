@@ -1,6 +1,6 @@
 
 body {
-	background: #eee !important;	
+
 }
 
 .wrapper {	
@@ -18,6 +18,13 @@ body {
 
 .form-signin-heading {
 	margin-bottom: 30px;
+}
+
+.btn{
+    /*background-color: rgba(135,72,241,1);
+    color:white;*/
+    background-color: rgba(135,72,241,1);
+    color: white;
 }
 
 	
@@ -41,10 +48,28 @@ input[type="password"] {
 }
 
 footer {
+    padding-top: 1.5rem;
     position: absolute;
-    bottom: 0;
+    margin:0;
+    bottom:0;
     width: 100%;
-    height: 40px;
-    background-color: #222;
-    color:#999;
+    height: 5rem;
+    /*background-color: white;*/
+    /*color:rgba(241,54,102,1);;*/
+    background-color: rgba(241,54,102,1);
+    color:white;
+}
+
+footer a {
+	color: white;
+
+}
+
+footer span {
+	font-size: 1.4rem;
+}
+
+#footer2 {
+    position: static;
+    bottom:0;
 }
