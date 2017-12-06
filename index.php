@@ -65,11 +65,15 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
                 </div>
             
                 
-                <footer>
-                  <div class="container">
-                    <span>Place sticky footer content here.</span>
-                  </div>
-                </footer>
+                <footer >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
             
               </body>
             </html>
@@ -486,9 +490,6 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                         <div class="col-md-6">
                             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
                         </div>
-                        <div class="col-md-6 text-right">
-                            <a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a>
-                        </div>
                     </div>
                 </div>
             </footer>
@@ -534,9 +535,6 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                         <div class="col-md-6">
                             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
                         </div>
-                        <div class="col-md-6 text-right">
-                            <a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a>
-                        </div>
                     </div>
                 </div>
             </footer>
@@ -578,9 +576,6 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                     <div class="row">
                         <div class="col-md-6">
                             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a>
                         </div>
                     </div>
                 </div>
