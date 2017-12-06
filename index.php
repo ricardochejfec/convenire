@@ -325,8 +325,8 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                       <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                           <li><a href="/">Home</a></li>
-                          <li><a href="event_login.html">About</a></li>
-                          <li><a href="#contact">Contact</a></li>
+                          <li><a href="/about.html">About</a></li>
+                          <li><a href="/contact.html">Contact</a></li>
                         </ul>
                       </div><!--/.nav-collapse -->
                     </div>
@@ -480,11 +480,18 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                 </div>
             
                 <!-- footer -->
-                <footer id="footer">
-                  <div class="container">
-                    <span>Place sticky footer content here.</span>
-                  </div>
-                </footer>
+                <footer >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
               </body>
             </html>
             ';
@@ -521,11 +528,18 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                 </div>
             
                 
-                <footer>
-                  <div class="container">
-                    <span>Place sticky footer content here.</span>
-                  </div>
-                </footer>
+                <footer >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
             
               </body>
             </html>
@@ -559,11 +573,18 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                 </div>
             
                 
-                <footer>
-                  <div class="container">
-                    <span>Place sticky footer content here.</span>
-                  </div>
-                </footer>
+                <footer >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
             
               </body>
             </html>
