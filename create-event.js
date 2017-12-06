@@ -8,6 +8,7 @@ $(document).ready(function() {
     var tasks = 1; 
     var emails = 1; 
 
+    
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
