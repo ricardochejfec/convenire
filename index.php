@@ -55,27 +55,27 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
               
               <body>
                 <div class="wrapper">
-                  <form class="form-signin" method="post" action="/Events/' . $eventID .'/home">       
+                  <form class="form-signin" method="post" id="loginform" action="/Events/' . $eventID .'/home">       
                     <h2 class="form-signin-heading">Sign in to ' . $title  . '!</h2>
                     <input type="text" id="username" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
                     <input type="text" class="form-control" name="name" placeholder="Name" required=""/>
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
                     <button id="loginbtn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
                   </form>
-                </div>
+                </div>' .
             
                 
-                <footer >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            //     <footer >
+            //     <div class="container">
+            //         <div class="row">
+            //             <div class="col-md-6">
+            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </footer>
             
-              </body>
+              '</body>
             </html>
             ';
         }
@@ -481,19 +481,19 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
             
                     </div>
                   </div>
-                </div>
+                </div>' . 
             
-                <!-- footer -->
-                <footer >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-              </body>
+            //     <!-- footer -->
+            //     <footer id="footer">
+            //     <div class="container">
+            //         <div class="row">
+            //             <div class="col-md-6">
+            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </footer>
+               '</body>
             </html>
             ';
 
@@ -526,20 +526,20 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                     <strong>Oh snap!</strong> Password or Email was incorrect. Please try again. ' . $_SESSION['checked'] . '
                     </div> 
                   </form>
-                </div>
+                </div>' .
             
                 
-                <footer >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            //     <footer >
+            //     <div class="container">
+            //         <div class="row">
+            //             <div class="col-md-6">
+            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </footer>
             
-              </body>
+              '</body>
             </html>
             ';
 
@@ -568,20 +568,20 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
                   </form>
-                </div>
+                </div>' .
             
                 
-                <footer >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            //     <footer >
+            //     <div class="container">
+            //         <div class="row">
+            //             <div class="col-md-6">
+            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+            //             </div>
+            //         </div>
+            //     </div>
+            // </footer>
             
-              </body>
+              '</body>
             </html>
             ';
 
@@ -917,9 +917,9 @@ $app->post('/create', function ($request, $response, $args) {
                     link:
                     <br/> <br/>                
                     convenire.com/Events/" . $eventID .
-                    "<br/> <br/>
-                    admin password:
-                    " . $adminpw .
+                    // "<br/> <br/>
+                    // admin password:
+                    // " . $adminpw .
                     "<br/> <br/>
                     guest password:
                     " . $pw .
