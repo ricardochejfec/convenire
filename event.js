@@ -12,10 +12,17 @@ $(window).on('load resize scroll', function() {
 		   	
 	    });
 
-	 $('#myothertab').click(function() {
-            event.preventDefault();
+	 $(document).on("click", '#myothertab',function() {
+ 			event.preventDefault();
             var f = $('#footer');
             f.css({position:'static'});
+
+	 		if ($(document).height() <= $(window).height()) {
+	 			event.preventDefault();
+           		var f = $('#footer');
+		   		f.css({position:'absolute'});
+	 		}
+	            
 	    });
 
 
