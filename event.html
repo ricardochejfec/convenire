@@ -245,6 +245,38 @@
                               </div>
                               <div class="media msg">
                                   <a class="pull-left" href="#"></a>
+                                  <div class="media-body">
+                                      <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:15am</small>
+                                      <h5 class="media-heading">phil.kwanfong@mail.mcgill.ca</h5>
+                                      <small class="col-lg-10">I'll bring the layout then.</small>
+                                  </div>
+                              </div>
+                              <div class="media msg">
+                                  <a class="pull-left" href="#"></a>
+                                  <div class="media-body">
+                                      <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:15am</small>
+                                      <h5 class="media-heading">phil.kwanfong@mail.mcgill.ca</h5>
+                                      <small class="col-lg-10">I'll bring the layout then.</small>
+                                  </div>
+                              </div>
+                              <div class="media msg">
+                                  <a class="pull-left" href="#"></a>
+                                  <div class="media-body">
+                                      <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:15am</small>
+                                      <h5 class="media-heading">phil.kwanfong@mail.mcgill.ca</h5>
+                                      <small class="col-lg-10">I'll bring the layout then.</small>
+                                  </div>
+                              </div>
+                              <div class="media msg">
+                                  <a class="pull-left" href="#"></a>
+                                  <div class="media-body">
+                                      <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:15am</small>
+                                      <h5 class="media-heading">phil.kwanfong@mail.mcgill.ca</h5>
+                                      <small class="col-lg-10">I'll bring the layout then.</small>
+                                  </div>
+                              </div>
+                              <div class="media msg">
+                                  <a class="pull-left" href="#"></a>
                               </div>
                           </div>
 
@@ -277,5 +309,30 @@
         </div>
       </div>
     </footer>
+    <script>
+      $(window).on('load resize scroll', function() {
+
+         $('.mytab').click(function() {
+                  event.preventDefault();
+                  var f = $('#footer');
+              f.css({position:'absolute'});
+              
+            });
+
+         $(document).on("click", '#myothertab',function() {
+            event.preventDefault();
+                  var f = $('#footer');
+                  f.css({position:'static'});
+
+            if ($(document).height() <= $(window).height()) {
+              event.preventDefault();
+                    var f = $('#footer');
+                f.css({position:'absolute'});
+            }
+                    
+            });
+
+      });
+    </script>
   </body>
 </html>
