@@ -1,3 +1,33 @@
+
+$(window).on('load resize scroll', function() {
+ //    var f = $('#footer');
+	// f.css({position:'static'});
+ //    if ($(document.body).height() <= $(window).height()) {
+ //       	f.css({position:'absolute'});
+ //    } 
+	 $('.mytab').click(function() {
+            event.preventDefault();
+            var f = $('#footer');
+		   	f.css({position:'absolute'});
+		   	
+	    });
+
+	 $(document).on("click", '#myothertab',function() {
+ 			event.preventDefault();
+            var f = $('#footer');
+            f.css({position:'static'});
+
+	 		if ($(document).height() <= $(window).height()) {
+	 			event.preventDefault();
+           		var f = $('#footer');
+		   		f.css({position:'absolute'});
+	 		}
+	            
+	    });
+
+
+});
+
 $(document).ready(function(){
 
 
