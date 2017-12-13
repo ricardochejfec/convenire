@@ -156,7 +156,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                 $taskScript = $taskScript . '<tr>
                                             <th scope="row">' . ($i+1) . '</th>
                                             <td>' .  $resultTasks[$i]['taskName']   . '</td>
-                                            <td><input type="TEXT" name="' . $resultTasks[$i]['taskName'] . '0' . '" size="25"></td>
+                                            <td><input type="email" name="' . $resultTasks[$i]['taskName'] . '0' . '" size="25"></td>
                                             <td><input type="TEXT" name="' . $resultTasks[$i]['taskName'] . '1' . '" size="25"></td>
                                             </tr>';
 
@@ -231,7 +231,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
             $pollTimeScript = $pollTimeScript . '<li class="list-group-item">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="checkbox" name="optionsRadios">
+                                                        <input type="radio" name="optionsRadios">
                                                         ' . $resultTimes[$i]['Date'] . ' ' . substr($resultTimes[$i]['StartTime'], 0, -3) . '-' . 
                                                         substr($resultTimes[$i]['EndTime'], 0, -3) . '
                                                         </input>
@@ -332,6 +332,9 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                           <li><a href="/about.html">About</a></li>
                           <li><a href="/contact.html">Contact</a></li>
                         </ul>
+                        <form action="/logout">
+                        <button type="submit" style="float:right; margin-top:10px;"  class="btn btn-primary btn-sm">Logout</button>
+                        </form>
                       </div><!--/.nav-collapse -->
                     </div>
                   </nav>
@@ -377,7 +380,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                                     <label>Created by:</label> 
                                     <div>' . $creator .'</div>
                                     <br>
-                                    <label for="guests">Checked-in Guests:</label>
+                                    <label for="guests">Guests:</label>
                                     <ul id="guests">
                                       ' . $emailListScript . '
                                     </ul>
@@ -634,7 +637,7 @@ $app->get('/updateTasks', function ($request, $response, $args){
         $i = $i + 1;
     }
 
-    header("Location: /Events/". $eventID . "/home");
+    header("Location: /Events/". $eventID . "/home#TasksAndDiscussion");
     exit;
 });
 $app->get('/updatelocationpoll', function ($request, $response, $args){
@@ -657,7 +660,7 @@ $app->get('/updatelocationpoll', function ($request, $response, $args){
 
     if(!$voted){
 
-        $sql = $db->prepare('UPDATE LocationPoll SET  votes = 100   WHERE eventID = :eId and address = :addr ;'); 
+        $sql = $db->prepare('UPDATE LocationPoll SET  votes = votes + 1   WHERE eventID = :eId and address = :addr ;'); 
 
         $sql->bindParam(':eId',$eventID);
         $sql->bindParam(':addr', $locName);
@@ -741,27 +744,82 @@ $app->get('/updatetimeepoll', function ($request, $response, $args){
     $vot = $sql->fetchAll();
     $voted = $vot[0];
 
+    if(!$voted){
 
-    $i = 0;
-    while($i<sizeof($timearr)){
-
-        $sql = $db->prepare('UPDATE TimePoll SET  votes = votes + 1   WHERE eventID = :eId and date = :dat and StartTime =:start and EndTime = :end ;'); 
+        $sql = $db->prepare('UPDATE TimePoll SET  votes = votes + 1   WHERE eventID = :eId and date = :dat and StartTime =:start and EndTime = :end ;');
 
         $sql->bindParam(':eId',$eventID);
-        $sql->bindParam(':dat', $timearr[$i]["date"]);
-        $sql->bindParam(':start', $timearr[$i]["start"]);
-        $sql->bindParam(':end', $timearr[$i]["end"]);
+        $sql->bindParam(':dat', $timearr[0]["date"]);
+        $sql->bindParam(':start', $timearr[0]["start"]);
+        $sql->bindParam(':end', $timearr[0]["end"]);
         $sql->execute();
-        $i = $i +1;
+    
+        $sql = $db->prepare('UPDATE eventEmails SET  votedTime = 1 , date =:dat, start = :start , end = :end WHERE eventID = :eId and email = :user ;'); 
+    
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':dat', $timearr[0]["date"]);
+        $sql->bindParam(':start', $timearr[0]["start"]);
+        $sql->bindParam(':end', $timearr[0]["end"]);
+        $sql->bindParam(':user', $user);
+        $sql->execute();
+    
+        $sql = $db->prepare('SELECT eventID, date,StartTime, EndTime, votes from TimePoll WHERE eventID = :eId order by votes DESC ;'); 
+
+        $sql->bindParam(':eId',$eventID);
+        
+        $sql->execute();
+        $res = $sql->fetchAll();
+
+
+
     }
 
-    $sql = $db->prepare('SELECT eventID, date,StartTime, EndTime, votes from TimePoll WHERE eventID = :eId order by votes ;'); 
 
-    $sql->bindParam(':eId',$eventID);
+    else {
+
+        $sql = $db->prepare('SELECT date, start, end from eventEmails WHERE eventID = :eId and email = :user ;'); 
     
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':user', $user);
+        
+        $sql->execute();
+        $arr = $sql->fetchAll();
+        $oldTime = $arr[0];
+
+        $sql = $db->prepare('UPDATE eventEmails SET  votedTime = 1 , date =:dat, start = :start , end = :end WHERE eventID = :eId and email = :user ;'); 
     
-    $sql->execute();
-    $res = $sql->fetchAll();
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':dat', $timearr[0]["date"]);
+        $sql->bindParam(':start', $timearr[0]["start"]);
+        $sql->bindParam(':end', $timearr[0]["end"]);
+        $sql->bindParam(':user', $user);
+        $sql->execute();
+
+        $sql = $db->prepare('UPDATE timePoll SET  votes = votes - 1   WHERE eventID = :eId and date = :dat and startTime = :start and endTime = :end ;');
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':dat', $oldTime['date']);
+        $sql->bindParam(':start', $oldTime['start']);
+        $sql->bindParam(':end', $oldTime['end']);
+        $sql->execute();
+
+        $sql = $db->prepare('UPDATE timePoll SET  votes = votes + 1   WHERE eventID = :eId and date = :dat and startTime = :start and endTime = :end ;'); 
+
+        $sql->bindParam(':eId',$eventID);
+        $sql->bindParam(':dat', $timearr[0]["date"]);
+        $sql->bindParam(':start', $timearr[0]["start"]);
+        $sql->bindParam(':end', $timearr[0]["end"]);
+        $sql->execute();
+
+        $sql = $db->prepare('SELECT eventID, date,StartTime, EndTime, votes from TimePoll WHERE eventID = :eId order by votes DESC;'); 
+
+        $sql->bindParam(':eId',$eventID);
+        
+        $sql->execute();
+        $res = $sql->fetchAll();
+
+
+    }
+    
 
 
     $response->getBody()->write(json_encode($res));
@@ -802,6 +860,15 @@ $app->get('/messageToChat', function ($request, $response, $args){
 
     header("Location: /chatUpdate");
     exit;
+});
+
+$app->get('/logout', function ($request, $response, $args){
+
+    session_start();
+    session_unset();
+    header("Location: /index.html");
+    exit;
+
 });
 
 //Code for event creation page, adds all the user input into the database
@@ -920,7 +987,6 @@ $app->post('/create', function ($request, $response, $args) {
         $message = "Hello,
                     <br/> <br/>
                     find below the passwords to access your new event, along with the secret link:
-                    link:
                     <br/> <br/>                
                     convenire.com/Events/" . $eventID .
                     // "<br/> <br/>

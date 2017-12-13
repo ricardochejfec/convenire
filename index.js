@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 
     $("#loginform").submit(function(){
-        alert("bitch");
+        
     	localStorage.setItem('username',  document.getElementById("username").value);
 
     });
