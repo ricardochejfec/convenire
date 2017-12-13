@@ -19,11 +19,15 @@ $(document).ready(function () {
 
     $('.carousel').carousel('cycle');
 
-
-
     $("#loginform").submit(function(){
         
     	localStorage.setItem('username',  document.getElementById("username").value);
+
+    });
+
+    $("#loginbtn").click(function(){
+        
+        localStorage.setItem('username',  document.getElementById("username").value);
 
     });
 

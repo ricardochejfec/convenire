@@ -1,11 +1,9 @@
-
 $('.mytab').click(function() {
     event.preventDefault();
     var f = $('#footer');
    	f.css({position:'absolute'});
    	
 });
-
 $(document).on("click", '#myothertab',function() {
 
 
@@ -21,24 +19,21 @@ $(document).on("click", '#myothertab',function() {
         
 });
 
-
 $(document).ready(function(){
 
-
+	// get eventId from url
    if (location.hash) {
         $("a[href='" + location.hash + "']").tab("show");
     }
     $(document.body).on("click", "a[data-toggle]", function(event) {
         location.hash = this.getAttribute("href");
     });
-
+    // eventId is arr[2]
     var arr = window.location.pathname.split('/');
-    var choice = '';
     
-    
-
+    // Jquery function triggered when voting in location poll
 	$("#locBtn").click(function(){
-		
+		var choice = '';
 		$('#locPoll li input').each(function(i)
 		{
 			
@@ -69,9 +64,11 @@ $(document).ready(function(){
 				
 			}
 			$( "#LocList" ).html(newHtml);
+			$('#WinningLoc').html(data[0]["address"]);
         
         }});
     });
+    // Jquery function triggered when voting in time poll
     $("#timeBtn").click(function(){
 		var timearr = [];
 		$('#timePoll li input').each(function(i)
@@ -112,11 +109,13 @@ $(document).ready(function(){
 				
 			 }
 			 $( "#timeList" ).html(newHtml);
+			 ("#WinningTime").html(data[0]["date"]+ " "  + data[0]["StartTime"] + "-" + data[0]["EndTime"]);
         
         }});
     });
+    
+    // Send Message chat button
     var btn = document.getElementById("MsgBtn");
-
     $(btn).click(function(){
 
     	var today = new Date();
@@ -147,8 +146,7 @@ $(document).ready(function(){
 
     
     function fetchdata(){
-
-  	
+    	// function get chat data
 		$.ajax({
 		 	url: '/chatUpdate',
 		 	type: 'get',
@@ -179,8 +177,6 @@ $(document).ready(function(){
 		 	}
 		});
 	}
-
-
 	setTimeout(fetchdata,100);
 
 });
@@ -192,7 +188,7 @@ $(window).on('load resize scroll', function() {
         f.css({position:'static'});
     }
     var arr = window.location.pathname.split('/');
-
+    // updates chat convo on page load
     $.ajax({
 		 	url: '/chatUpdate',
 		 	type: 'get',
@@ -222,6 +218,7 @@ $(window).on('load resize scroll', function() {
 		});
 
 });
+// keep tab when refreshed
 
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");

@@ -91,15 +91,17 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
     }
 });
 
+// Code that generates event page
 $app->any('/Events/{eventID}/home', function ($request, $response, $args){
 
     $db = getDB();
+    // Data that user inputted in login page
     $eventID = $request->getAttribute('eventID');
     $pwdInputted = $request->getParam('password');
     $emailInputted = $request->getParam('username');
     $nameInputted = $request->getParam('name');
     
-    // session code
+    // session start
     session_start();
     $expireAfter = 20;
     if(isset($_SESSION['last_action'])){
@@ -121,14 +123,11 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
     }
     $_SESSION['last_action'] = time();
 
-    //sql code
+    
 
     try {
 
-        // get info from db
-
-         
-        // get main info
+        // get main info of event
         $sql = $db->prepare("SELECT EventTitle, Address, Description, Date, StartTime, EndTime, Password, Creator FROM Events where EventId = :eventID"); 
         $sql->bindParam(":eventID", $eventID);
         $sql->execute();
@@ -143,7 +142,6 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
         $creator = $result[0]['Creator'];
 
         // get tasks
-
         $sql = $db->prepare("SELECT taskName, NameInCharge, EmailInCharge FROM EventTasks where EventId = :eventID"); 
         $sql->bindParam(":eventID", $eventID);
         $sql->execute();
@@ -176,7 +174,6 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
         }
 
         // get locations
-
         $sql = $db->prepare("SELECT Address, votes FROM LocationPoll where EventId = :eventID order by votes DESC"); 
         $sql->bindParam(":eventID", $eventID);
         $sql->execute();
@@ -205,10 +202,9 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                                                 </div>
                                                 </li>';
             $i =  $i + 1;
-
         }
-        // get times
 
+        // get times
         $sql = $db->prepare("SELECT Date, StartTime, EndTime, votes FROM TimePoll where EventId = :eventID ORDER by votes DESC"); 
         $sql->bindParam(":eventID", $eventID);
         $sql->execute();
@@ -239,12 +235,9 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                                                 </div>
                                                 </li>';
             $i =  $i + 1;
-
         }
 
-
         // get emails
-
         $sql = $db->prepare("SELECT Email FROM EventEmails where EventId = :eventID"); 
         $sql->bindParam(":eventID", $eventID);
         $sql->execute();
@@ -255,9 +248,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
             
             $emailListScript = $emailListScript . '<li>' . $resultEmails[$i]['Email'] . '</li>';
             $i =  $i + 1;
-
         }
-
 
         // get chat history
         $sql = $db->prepare("SELECT Email, Time, Comment FROM TaskDiscussion where EventId = :eventID ORDER by time ASC"); 
@@ -265,11 +256,9 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
         $sql->execute();
         $resultConvo = $sql->fetchAll();
 
-
+        // if password is entered by user, means he was in login page and attempted to log in
         if ( $pwdInputted != '' ){
-
-            
-            
+            // verify password
             $checked = password_verify($pwdInputted , $eventPwd);
 
             
@@ -281,19 +270,17 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
             
             $stmt->execute();
             
-            
+            // if email entered is associated to event then $checked become result of password verification
             if ($stmt->rowCount() > 0){
 
                 $_SESSION['checked'] = $checked;
                 if($_SESSION['checked']){$_SESSION['user'] = $emailInputted;}
             } else{
-
                 $_SESSION['checked'] = 0;
-
             }
             
         }
-        
+        // if email and password is correct generate html code for event page
         if (isset($_SESSION['checked']) && $_SESSION['checked']){
 
             echo '
@@ -368,10 +355,10 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                             <div class="main-cont row">
                                 <div class="col-xs-6">
                                     <label>Location:</label> 
-                                    <div>' . $mainLocScript . '</div>
+                                    <div id="WinningLoc">' . $mainLocScript . '</div>
                                     <br>
                                     <label for="times">Date and Time:</label>
-                                    <div> ' . $mainTimeScript . '</div>
+                                    <div id="WinningTime"> ' . $mainTimeScript . '</div>
                                     <br>
                                     <label for="desc">Description:</label>
                                     <p id="desc"> ' . $eventDesc . '</p>
@@ -487,27 +474,27 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                 </div>
             
                 </div>
-                  <br><br>'.
-                //     <!-- footer -->
-                //   <div id="footer">
-                //       <div class="container">
-                //         <div class="row">
-                //           <div class="col-md-6">
-                //             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-                //           </div>
-                //           <div class="col-md-6">
-                //             <span class="pull-right"><a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a></span>  
-                //           </div>
-                //         </div>
-                //       </div>
-                //   </div>
+                  <br><br>
+                    <!-- footer -->
+                  <div id="footer">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                          </div>
+                          <div class="col-md-6">
+                            <span class="pull-right"><a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a></span>  
+                          </div>
+                        </div>
+                      </div>
+                  </div>
                   
-               '</body>
+               </body>
             </html>
             ';
-
-
-        } else if (isset($_SESSION['checked']) && $pwdInputted != ''){
+        } 
+        // password is incorrect
+        else if (isset($_SESSION['checked']) && $pwdInputted != ''){
 
             echo '
             <!DOCTYPE html>
@@ -525,34 +512,35 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
               
               <body>
                 <div class="wrapper">
-                  <form style="padding-bottom: 10px;" class="form-signin" method="post" action="/Events/' . $eventID .'/home">       
-                    <h2 class="form-signin-heading">Sign in to ' . $eventTitle . '!</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+                  <form class="form-signin" method="post" id="loginform" action="/Events/' . $eventID .'/home">       
+                    <h2 class="form-signin-heading">Sign in to ' . $eventTitle  . '!</h2>
+                    <input type="text" id="username" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
                     <input type="text" class="form-control" name="name" placeholder="Name" required=""/>
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                    <button id="loginbtn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
                     <div class="alert alert-danger" role="alert" style="margin-top: 10px;">  
-                    <strong>Oh snap!</strong> Password or Email was incorrect. Please try again. ' . $_SESSION['checked'] . '
-                    </div> 
+                    <strong>Oh snap!</strong> Password or Email was incorrect. Please try again.
+                    </div>    
                   </form>
                 </div>
             
                 
-                <footer >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                <div id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-            
+
               </body>
             </html>
             ';
-
         }
+
+        // when user session expired and he refreshes page
         else {
             echo '
             <!DOCTYPE html>
@@ -570,31 +558,29 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
               
               <body>
                 <div class="wrapper">
-                  <form class="form-signin" method="post" action="/Events/' . $eventID .'/home">       
-                    <h2 class="form-signin-heading">Sign in to ' . $eventTitle . '!</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+                  <form class="form-signin" method="post" id="loginform" action="/Events/' . $eventID .'/home">       
+                    <h2 class="form-signin-heading">Sign in to ' . $eventTitle  . '!</h2>
+                    <input type="text" id="username" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
                     <input type="text" class="form-control" name="name" placeholder="Name" required=""/>
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+                    <button id="loginbtn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
                   </form>
                 </div>
             
                 
-                <footer >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                <div id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-            
+
               </body>
             </html>
             ';
-
-
         }
 
     }
@@ -604,6 +590,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
         }
 });
 
+// Update tasks when assigned
 $app->get('/updateTasks', function ($request, $response, $args){
 
     $db = getDB();
@@ -640,6 +627,8 @@ $app->get('/updateTasks', function ($request, $response, $args){
     header("Location: /Events/". $eventID . "/home#TasksAndDiscussion");
     exit;
 });
+
+// Updates poll votes and displays poll
 $app->get('/updatelocationpoll', function ($request, $response, $args){
     $db = getDB();
     $eventID = $request->getParam('eventId');
@@ -655,8 +644,7 @@ $app->get('/updatelocationpoll', function ($request, $response, $args){
     $vot = $sql->fetchAll();
     $voted = $vot[0];
 
-
-
+    // User can only vote for 1 location option, if he votes again, his vote is changed
 
     if(!$voted){
 
@@ -679,9 +667,6 @@ $app->get('/updatelocationpoll', function ($request, $response, $args){
         
         $sql->execute();
         $res = $sql->fetchAll();
-
-
-
     } else {
 
         $sql = $db->prepare('SELECT location from eventEmails WHERE eventID = :eId and email = :user ;'); 
@@ -718,16 +703,12 @@ $app->get('/updatelocationpoll', function ($request, $response, $args){
         
         $sql->execute();
         $res = $sql->fetchAll();
-
-
     }
-
-    
-
 
     $response->getBody()->write(json_encode($res));
 });
 
+// Updates poll votes and displays poll
 $app->get('/updatetimeepoll', function ($request, $response, $args){
     $db = getDB();
     $eventID = $request->getParam('eventId');
@@ -743,7 +724,7 @@ $app->get('/updatetimeepoll', function ($request, $response, $args){
 
     $vot = $sql->fetchAll();
     $voted = $vot[0];
-
+    // Voting mechanism, user can only vote for 1 time option
     if(!$voted){
 
         $sql = $db->prepare('UPDATE TimePoll SET  votes = votes + 1   WHERE eventID = :eId and date = :dat and StartTime =:start and EndTime = :end ;');
@@ -769,12 +750,7 @@ $app->get('/updatetimeepoll', function ($request, $response, $args){
         
         $sql->execute();
         $res = $sql->fetchAll();
-
-
-
     }
-
-
     else {
 
         $sql = $db->prepare('SELECT date, start, end from eventEmails WHERE eventID = :eId and email = :user ;'); 
@@ -816,15 +792,12 @@ $app->get('/updatetimeepoll', function ($request, $response, $args){
         
         $sql->execute();
         $res = $sql->fetchAll();
-
-
     }
-    
-
-
+    // return json format
     $response->getBody()->write(json_encode($res));
 });
 
+// Updates the chat discussion 
 $app->get('/chatUpdate', function ($request, $response, $args){
 
     $db = getDB();
@@ -836,10 +809,9 @@ $app->get('/chatUpdate', function ($request, $response, $args){
 
 
     $response->getBody()->write(json_encode($res));
-
-
 });
 
+// Adds message to chat history
 $app->get('/messageToChat', function ($request, $response, $args){
 
     $db = getDB();
@@ -862,6 +834,7 @@ $app->get('/messageToChat', function ($request, $response, $args){
     exit;
 });
 
+// logs user out of session
 $app->get('/logout', function ($request, $response, $args){
 
     session_start();
@@ -882,6 +855,7 @@ $app->post('/create', function ($request, $response, $args) {
     $tasks = $request->getParam('tasks');
     $desc = $request->getParam('desc');
     $pw = $request->getParam('pw');
+    $adminpw = $request->getParam('adminpw');
     $emails = $request->getParam('emails');
     $creator = $request->getParam('em');
     $pwHash = password_hash($pw, PASSWORD_DEFAULT, ['cost' => 12]);
@@ -988,9 +962,11 @@ $app->post('/create', function ($request, $response, $args) {
                     find below the passwords to access your new event, along with the secret link:
                     <br/> <br/>                
                     convenire.com/Events/" . $eventID .
+                    // "<br/> <br/>
+                    // admin password:
+                    // " . $adminpw .
                     "<br/> <br/>
                     guest password:
-                    <br/>
                     " . $pw .
                     "<br/> <br/>
                     Thank you for using Convenire!
@@ -1027,10 +1003,10 @@ $app->post('/create', function ($request, $response, $args) {
     
         $subject = "Invitation to " . $title . " !";
         $message = "Hello,<br/> <br/>
-                    find below the password to access " . $title . " at convenire.com/Events/" . $eventID . " :
+                    find below the password to access " . $title . " at convenire.com/Events/" . $eventID . "
                     <br/> <br/>
                     password:
-                    <br/>
+                    
                     " . $pw .
                     "<br/> <br/>
                     Thank you for using Convenire!
