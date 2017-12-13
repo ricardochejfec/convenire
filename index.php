@@ -882,7 +882,6 @@ $app->post('/create', function ($request, $response, $args) {
     $tasks = $request->getParam('tasks');
     $desc = $request->getParam('desc');
     $pw = $request->getParam('pw');
-    $adminpw = $request->getParam('adminpw');
     $emails = $request->getParam('emails');
     $creator = $request->getParam('em');
     $pwHash = password_hash($pw, PASSWORD_DEFAULT, ['cost' => 12]);
@@ -989,11 +988,9 @@ $app->post('/create', function ($request, $response, $args) {
                     find below the passwords to access your new event, along with the secret link:
                     <br/> <br/>                
                     convenire.com/Events/" . $eventID .
-                    // "<br/> <br/>
-                    // admin password:
-                    // " . $adminpw .
                     "<br/> <br/>
                     guest password:
+                    <br/>
                     " . $pw .
                     "<br/> <br/>
                     Thank you for using Convenire!
@@ -1031,8 +1028,9 @@ $app->post('/create', function ($request, $response, $args) {
         $subject = "Invitation to " . $title . " !";
         $message = "Hello,<br/> <br/>
                     find below the password to access " . $title . " at convenire.com/Events/" . $eventID . " :
-                    password:
                     <br/> <br/>
+                    password:
+                    <br/>
                     " . $pw .
                     "<br/> <br/>
                     Thank you for using Convenire!
