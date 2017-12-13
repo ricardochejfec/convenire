@@ -377,7 +377,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                                     <label>Created by:</label> 
                                     <div>' . $creator .'</div>
                                     <br>
-                                    <label for="guests">Checked-in Guests:</label>
+                                    <label for="guests">Guests:</label>
                                     <ul id="guests">
                                       ' . $emailListScript . '
                                     </ul>
@@ -484,22 +484,22 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                 </div>
             
                 </div>
-                  <br><br>
-                    <!-- footer -->
-                  <div id="footer">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-                          </div>
-                          <div class="col-md-6">
-                            <span class="pull-right"><a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a></span>  
-                          </div>
-                        </div>
-                      </div>
-                  </div>
+                  <br><br>'.
+                //     <!-- footer -->
+                //   <div id="footer">
+                //       <div class="container">
+                //         <div class="row">
+                //           <div class="col-md-6">
+                //             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                //           </div>
+                //           <div class="col-md-6">
+                //             <span class="pull-right"><a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a></span>  
+                //           </div>
+                //         </div>
+                //       </div>
+                //   </div>
                   
-               </body>
+               '</body>
             </html>
             ';
 
@@ -532,20 +532,20 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                     <strong>Oh snap!</strong> Password or Email was incorrect. Please try again. ' . $_SESSION['checked'] . '
                     </div> 
                   </form>
-                </div>' .
+                </div>
             
                 
-            //     <footer >
-            //     <div class="container">
-            //         <div class="row">
-            //             <div class="col-md-6">
-            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </footer>
+                <footer >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
             
-              '</body>
+              </body>
             </html>
             ';
 
@@ -574,20 +574,20 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
                   </form>
-                </div>' .
+                </div>
             
                 
-            //     <footer >
-            //     <div class="container">
-            //         <div class="row">
-            //             <div class="col-md-6">
-            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </footer>
+                <footer >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
             
-              '</body>
+              </body>
             </html>
             ';
 
@@ -920,7 +920,6 @@ $app->post('/create', function ($request, $response, $args) {
         $message = "Hello,
                     <br/> <br/>
                     find below the passwords to access your new event, along with the secret link:
-                    link:
                     <br/> <br/>                
                     convenire.com/Events/" . $eventID .
                     // "<br/> <br/>
