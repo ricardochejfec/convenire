@@ -855,11 +855,9 @@ $app->post('/create', function ($request, $response, $args) {
     $tasks = $request->getParam('tasks');
     $desc = $request->getParam('desc');
     $pw = $request->getParam('pw');
-    $adminpw = $request->getParam('adminpw');
     $emails = $request->getParam('emails');
     $creator = $request->getParam('em');
     $pwHash = password_hash($pw, PASSWORD_DEFAULT, ['cost' => 12]);
-    $adminpwHash = password_hash($adminpw, PASSWORD_DEFAULT, ['cost' => 12]);
 
     try {
         $db = getDB();
@@ -877,8 +875,8 @@ $app->post('/create', function ($request, $response, $args) {
             if($rows == 0)
             {
                 //Add the event to the main event table
-                $sql_event = "INSERT INTO Events (EventId, Address, Date, StartTime, EndTime, Description, EventTitle, Password, AdminPassword, Creator) 
-                VALUES ('$eventID', '$locs[0]', '$times[0]', '$times[1]', '$times[2]', '$desc', '$title', '$pwHash', '$adminpwHash' , '$creator')";
+                $sql_event = "INSERT INTO Events (EventId, Address, Date, StartTime, EndTime, Description, EventTitle, Password, Creator) 
+                VALUES ('$eventID', '$locs[0]', '$times[0]', '$times[1]', '$times[2]', '$desc', '$title', '$pwHash', '$creator')";
 
                 $stmt_event = $db->query($sql_event);
                 
@@ -962,9 +960,6 @@ $app->post('/create', function ($request, $response, $args) {
                     find below the passwords to access your new event, along with the secret link:
                     <br/> <br/>                
                     convenire.com/Events/" . $eventID .
-                    // "<br/> <br/>
-                    // admin password:
-                    // " . $adminpw .
                     "<br/> <br/>
                     guest password:
                     " . $pw .
