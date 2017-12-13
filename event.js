@@ -13,6 +13,7 @@ $(window).on('load resize scroll', function() {
 	    });
 
 	 $(document).on("click", '#myothertab',function() {
+	 		alert("hey");
  			event.preventDefault();
             var f = $('#footer');
             f.css({position:'static'});

@@ -1,9 +1,9 @@
 body{
-    /*background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);*/
+    background:linear-gradient(10deg, rgba(244,235,160,1) 43%,rgba(192,250,202,1) 43%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     /*background-color: rgba(192,250,202,1);*/
-	background-color: rgba(244,235,160,1);
+	/*background-color: rgba(244,235,160,1);*/
 
 }
 
