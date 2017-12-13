@@ -3,16 +3,17 @@ $(document).ready(function() {
     // var wrapper         = $(".name"); //Fields wrapper
 	var rem_button = $("a.remove_field");
 
+    // counters for arrays of inputs
     var locs = 1;
     var times = 3; 
     var tasks = 1; 
     var emails = 1; 
 
-    
+    // tool tips '?'
     $('[data-toggle="tooltip"]').tooltip(); 
 
 
-    $(".add_button_loc").click(function(e){ //on add input button click
+    $(".add_button_loc").click(function(e){ //on add input button click location
     	var wrapper = $(this).parent();
         e.preventDefault();
 
@@ -22,7 +23,7 @@ $(document).ready(function() {
         locs++;
     });
 
-    $(".add_button_task_guest").click(function(e){ //on add input button click
+    $(".add_button_task_guest").click(function(e){ //on add input button click guest 
         var wrapper = $(this).parent();
         e.preventDefault();
         var sibl = $(this).siblings("input");
@@ -44,7 +45,7 @@ $(document).ready(function() {
 
     });
 
-    $(".add_button_times").click(function(e){ //on add input button click
+    $(".add_button_times").click(function(e){ //on add input button click times 
         var wrapper = $(this).parent();
         e.preventDefault();
         var str_to_append = '<div class="form-inline"> <br> \
@@ -66,10 +67,12 @@ $(document).ready(function() {
 
     });
 
+    // datepicker
     $('body').on('focus',".datepicker", function(){
         $(this).datepicker({ dateFormat: 'yy-mm-dd' });
     });
 
+    // timepicker
     $('body').on('focus',".timepicker", function(){
         $(this).timepicker({
             timeFormat: 'HH:mm',
@@ -79,9 +82,7 @@ $(document).ready(function() {
         });
     });
 
-
-
-   
+    
     $(document).on("click",".remove_field", function(e){ //user click on remove text
         var key = $(this).attr("class").split(" ")[0];
         if (key == 'tasks') {

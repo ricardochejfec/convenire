@@ -62,20 +62,20 @@ $app->any("/Events/{eventID}", function ($request, $response, $args) {
                     <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
                     <button id="loginbtn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
                   </form>
-                </div>' .
+                </div>
             
                 
-            //     <footer >
-            //     <div class="container">
-            //         <div class="row">
-            //             <div class="col-md-6">
-            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </footer>
-            
-              '</body>
+                <div id="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              </body>
             </html>
             ';
         }
@@ -339,7 +339,7 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
             
               <!-- body -->
               <div class="wrapper">
-                <h1> ' . $eventTitle  .'</h1>
+                <h1 class="title"> ' . $eventTitle  .'</h1>
                 <br><br>
                 <div class="outersquare container">
                 <!-- Nav tabs -->
@@ -481,19 +481,25 @@ $app->any('/Events/{eventID}/home', function ($request, $response, $args){
             
                     </div>
                   </div>
-                </div>' . 
+                </div>
             
-            //     <!-- footer -->
-            //     <footer id="footer">
-            //     <div class="container">
-            //         <div class="row">
-            //             <div class="col-md-6">
-            //                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
-            //             </div>
-            //         </div>
-            //     </div>
-            // </footer>
-               '</body>
+                </div>
+                  <br><br>
+                    <!-- footer -->
+                  <div id="footer">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png"/></a> <span>2017 Mcgill University.</span>
+                          </div>
+                          <div class="col-md-6">
+                            <span class="pull-right"><a href="contact.html">Contact</a> | <a href="index.html">CONVENIRE</a> |  <a href="about.html">Help</a></span>  
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  
+               </body>
             </html>
             ';
 

@@ -1,35 +1,26 @@
 
-$(window).on('load resize scroll', function() {
- //    var f = $('#footer');
-	// f.css({position:'static'});
- //    if ($(document.body).height() <= $(window).height()) {
- //       	f.css({position:'absolute'});
- //    } 
-	 $('.mytab').click(function() {
-            event.preventDefault();
-            var f = $('#footer');
-		   	f.css({position:'absolute'});
-		   	
-	    });
-
-	 $(document).on("click", '#myothertab',function() {
-			alert("hey2");
-		
- 			event.preventDefault();
-            var f = $('#footer');
-            f.css({position:'static'});
-			
-	 		if ($(document).height() <= $(window).height()) {
-				alert("hey");
-	 			event.preventDefault();
-           		var f = $('#footer');
-		   		f.css({position:'absolute'});
-	 		}
-	            
-	    });
-
-
+$('.mytab').click(function() {
+    event.preventDefault();
+    var f = $('#footer');
+   	f.css({position:'absolute'});
+   	
 });
+
+$(document).on("click", '#myothertab',function() {
+
+
+    var f = $('#footer');
+    f.css({position:'static'});
+	
+		if ($(document).height() <= $(window).height()) {
+		alert("hey");
+
+   		var f = $('#footer');
+   		f.css({position:'absolute'});
+		}
+        
+});
+
 
 $(document).ready(function(){
 

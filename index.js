@@ -10,7 +10,7 @@ $(document).ready(function () {
             f.css({position: "absolute"});
         }
     });
-    
+
     $(document).ready(function() {
          $(window).trigger('resize');
         });
@@ -19,13 +19,6 @@ $(document).ready(function () {
 
     $('.carousel').carousel('cycle');
 
-    
-
-	// $('#myothertab').click(function() {
- //            event.preventDefault();
- //            var f = $('#footer');
- //            f.css({position:'static'});
- //    });
 
 
     $("#loginform").submit(function(){
