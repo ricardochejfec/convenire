@@ -22,6 +22,7 @@ $(document).ready(function () {
 
 
     $("#loginform").submit(function(){
+        
     	localStorage.setItem('username',  document.getElementById("username").value);
 
     });

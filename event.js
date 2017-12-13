@@ -79,8 +79,8 @@ $(document).ready(function(){
 			
 			if($(this).is(':checked')) {
 				var date = this.labels[0].innerText.substring(0,11);
-				var start = this.labels[0].innerText.substring(12,17);
-				var end = this.labels[0].innerText.substring(19,);
+				var start = this.labels[0].innerText.substring(11,16);
+				var end = this.labels[0].innerText.substring(18,23);
 
 
 				var timechecked = {date: date, start: start, end: end};
@@ -175,13 +175,13 @@ $(document).ready(function(){
 
 		 	},
 		 	complete:function(data){
-		 	 setTimeout(fetchdata,1000);
+		 	 setTimeout(fetchdata,100);
 		 	}
 		});
 	}
 
 
-	setTimeout(fetchdata,1000);
+	setTimeout(fetchdata,100);
 
 });
 
