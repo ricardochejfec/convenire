@@ -33,6 +33,7 @@ $(document).ready(function(){
     
     // Jquery function triggered when voting in location poll
 	$("#locBtn").click(function(){
+		this.disabled = true;
 		var choice = '';
 		$('#locPoll li input').each(function(i)
 		{
@@ -70,6 +71,7 @@ $(document).ready(function(){
     });
     // Jquery function triggered when voting in time poll
     $("#timeBtn").click(function(){
+		this.disabled = true;
 		var timearr = [];
 		$('#timePoll li input').each(function(i)
 		{
@@ -77,7 +79,7 @@ $(document).ready(function(){
 			if($(this).is(':checked')) {
 				var date = this.labels[0].innerText.substring(0,11);
 				var start = this.labels[0].innerText.substring(11,16);
-				var end = this.labels[0].innerText.substring(18,23);
+				var end = this.labels[0].innerText.substring(17,23);
 
 
 				var timechecked = {date: date, start: start, end: end};
@@ -109,7 +111,7 @@ $(document).ready(function(){
 				
 			 }
 			 $( "#timeList" ).html(newHtml);
-			 ("#WinningTime").html(data[0]["date"]+ " "  + data[0]["StartTime"] + "-" + data[0]["EndTime"]);
+			 $("#WinningTime").html(data[0]["date"]+ " "  + data[0]["StartTime"] + "-" + data[0]["EndTime"]);
         
         }});
     });
